@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="placeholder_text">Meaningless Text</string>
+
+    <string name="title_activity_movie_detail">Movie Detail</string>
+    <string name="poster_thumbnail">Poster Thumbnail</string>
+    <string name="release_date">Released:</string>
+    <string name="viewer_rating">Viewer Rating:</string>
+    <string name="favourited_movie">Like this?:</string>
+    <string name="add_to_favourites_button_text">Add to Favourites!</string>
+    <string name="remove_from_favourites_button_text">Remove from Favourites!</string>
+    <string name="info_attribution">Data from themoviedb.com</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="review_author">Reviewed by:</string>
+
+<!-- Preference fields -->
+    <string name="sort_param_key">sort_parameter</string>
+    <string name="sort_param_label">Sort by:</string>
+    <string name="sort_param_default">popular</string>
+
+    <string-array name="sort_descriptions">
+        <item>Most popular</item>
+        <item>Highest rated</item>
+        <item>Favourites</item>
+    </string-array>
+
+    <string-array name="sort_parameters">
+        <item>popular</item>
+        <item>top_rated</item>
+        <item>favourites</item>
+    </string-array>
+
+</resources>

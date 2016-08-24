@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+    <ListPreference
+        android:key="@string/sort_param_key"
+        android:entries="@array/sort_descriptions"
+        android:entryValues="@array/sort_parameters"
+        android:summary="Select the kind of data that you would like to download"
+        android:title="@string/sort_param_label"
+        android:defaultValue="@string/sort_param_default"/>
+
+</PreferenceScreen>
