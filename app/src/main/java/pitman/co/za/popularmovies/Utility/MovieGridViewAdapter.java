@@ -1,7 +1,6 @@
 package pitman.co.za.popularmovies.Utility;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,16 +48,9 @@ public class MovieGridViewAdapter extends BaseAdapter {
         return 0;
     }
 
-//    public void addAll(ArrayList<MovieInfo> movieInfoArrayList) {
-//        this.movieInformation.clear();
-//        this.movieInformation.addAll(movieInfoArrayList);
-//        notifyDataSetChanged();
-//    }
-
     @Override
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
-        Log.d(LOG_TAG, "notifyDataSetChanged() called in parent class");
     }
 
     @Override
@@ -76,7 +68,6 @@ public class MovieGridViewAdapter extends BaseAdapter {
             // set image based on selected text
             ImageView imageView = (ImageView) gridview.findViewById(R.id.gridItem_image);
 
-            Log.d(LOG_TAG, "Image for " + movieInformation.get(position).getOriginalTitle());
             String url = getMoviePosterPath(position);
             Picasso.with(context)
                     .load(url)
@@ -84,7 +75,6 @@ public class MovieGridViewAdapter extends BaseAdapter {
                     .into(imageView);
 
         } else {
-            Log.d(LOG_TAG, "getView(), convertView != null for " + movieInformation.get(position).getOriginalTitle());
             gridview = (View) convertView;
         }
 
@@ -92,11 +82,10 @@ public class MovieGridViewAdapter extends BaseAdapter {
     }
 
     public void swapData(ArrayList<MovieInfo> movies) {
-//        movieInformation = movies;
         int numberOfOldEntries = movieInformation.size();
         movieInformation.clear();
         movieInformation.addAll(movies);
-        Log.d(LOG_TAG, "data swapped out! " + numberOfOldEntries + " items removed, items added: " + movies.size());
+//        Log.d(LOG_TAG, "data swapped out! " + numberOfOldEntries + " items removed, items added: " + movies.size());
 //        this.notifyDataSetInvalidated();
         notifyDataSetChanged();
     }

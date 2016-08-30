@@ -63,6 +63,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
         if (mMovieInfoArrayList != null) {
             outState.putInt("numberOfMovies", mMovieInfoArrayList.size());
+            outState.putString("selectedPreference", preference);
             for (int i = 0; i < mMovieInfoArrayList.size(); i++) {
                 outState.putParcelable("movie" + i, mMovieInfoArrayList.get(i));
             }
@@ -72,19 +73,19 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mCallbacks = (Callbacks) activity;
-        Log.d(LOG_TAG, "1. onAttach()");
+//        Log.d(LOG_TAG, "1. onAttach()");
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setHasOptionsMenu(true);
-        Log.d(LOG_TAG, "2. onCreate()");
+//        Log.d(LOG_TAG, "2. onCreate()");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup fragment, Bundle savedInstanceState) {
-        Log.d(LOG_TAG, "3. onCreateView() in MainActivityFragment called");
+//        Log.d(LOG_TAG, "3. onCreateView() in MainActivityFragment called");
         rootView = inflater.inflate(R.layout.fragment_main, fragment, false);  // R.layout.fragment_main refers to filename of fragment_main.xml, not an ID
 
         this.setHasOptionsMenu(true);
@@ -112,14 +113,14 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
         // moved to onStart() for testing
         if (savedInstanceState != null) {
             retrieveState(savedInstanceState);
-            Log.d(LOG_TAG, "retrieving state after rotation or similar");
+//            Log.d(LOG_TAG, "retrieving state after rotation or similar");
         } else {
             executeQuery();
         }
 
         if (mMovieInfoArrayList != null) {
             if (mMovieInfoArrayList.size() > 0) {
-                Log.d(LOG_TAG, "swapping adapter data");
+//                Log.d(LOG_TAG, "swapping adapter data");
                 adapter.swapData(mMovieInfoArrayList);
             }
         }
@@ -130,7 +131,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     @Override
     public void onStart() {
         super.onStart();
-        Log.d(LOG_TAG, "4. onStart() called");
+//        Log.d(LOG_TAG, "4. onStart() called");
 
         // Need to detect if the preference has changed
         Context context = this.getActivity();
@@ -166,28 +167,28 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     public void onResume() {
         super.onResume();
-        Log.d(LOG_TAG, "5. onResume()");
+//        Log.d(LOG_TAG, "5. onResume()");
     }
 
     public void onPause() {
         super.onPause();
-        Log.d(LOG_TAG, "6. onPause()");
+//        Log.d(LOG_TAG, "6. onPause()");
     }
 
     public void onStop() {
         super.onStop();
-        Log.d(LOG_TAG, "7. onStop()");
+//        Log.d(LOG_TAG, "7. onStop()");
     }
 
     public void onDestroyView() {
         super.onDestroyView();
-        Log.d(LOG_TAG, "8. onDestroyView()");
+//        Log.d(LOG_TAG, "8. onDestroyView()");
     }
 
     public void onDetach() {
         super.onDetach();
         mCallbacks = null;
-        Log.d(LOG_TAG, "10. onDetach() - fragment about to be destroyed");
+//        Log.d(LOG_TAG, "10. onDetach() - fragment about to be destroyed");
     }
 
     private void retrieveState(Bundle savedInstanceState) {
@@ -250,10 +251,10 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     public void createAndGenerateAdapterAndGridView(ArrayList<MovieInfo> objectArray) {
 
         if (adapter == null) {
-            Log.d(LOG_TAG, "adapter is null");
+//            Log.d(LOG_TAG, "adapter is null");
             adapter = new MovieGridViewAdapter(getActivity(), objectArray);
         } else {
-            Log.d(LOG_TAG, "new object array passed into adapter, array length: " + objectArray.size());
+//            Log.d(LOG_TAG, "new object array passed into adapter, array length: " + objectArray.size());
             adapter.swapData(objectArray);
         }
 
@@ -276,7 +277,7 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     // Example code from Sunshine II app, and implementation guidance from https://github.com/Vane101/Vmovie
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        Log.d(LOG_TAG, "OnCreateLoader called, to return new Loader");
+//        Log.d(LOG_TAG, "OnCreateLoader called, to return new Loader");
         Uri movieListingUri = MoviesContract.buildMovieListing(preference);
         return new CursorLoader(getActivity(),
                 movieListingUri,
@@ -302,9 +303,9 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
                     movie.setOverview(data.getString(6));
                     movie.setFavourite(true);
 
-                    Log.d(LOG_TAG, "loaded from database! "
-                            + movie.getMovieId() + "  "
-                            + movie.getOriginalTitle());
+//                    Log.d(LOG_TAG, "loaded from database! "
+//                            + movie.getMovieId() + "  "
+//                            + movie.getOriginalTitle());
 
                     movieList.add(movie);
                     data.moveToNext();
